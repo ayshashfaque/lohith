@@ -40,20 +40,20 @@ const QualityTerminal = () => {
   return (
     <section className="section section-odd quality-terminal" id="engineering">
       <div className="container qt-container">
-        
+
         <div className="qt-header">
-          <div className="micro-label">✦ ENGINEERING STANDARDS</div>
-          <h2 className="section-title">The Interactive Quality Terminal</h2>
+
+          <h2 className="section-title">ENGINEERING STANDARDS</h2>
           <p className="qt-subtitle">
             Explore the structural integrity and premium material specifications embedded at every layer of a Lohith build.
           </p>
         </div>
 
         <div className="qt-dashboard">
-          
+
           <div className="qt-sidebar">
             {tabData.map((tab, index) => (
-              <button 
+              <button
                 key={tab.id}
                 className={`qt-tab ${activeTab === index ? 'active' : ''}`}
                 onClick={() => setActiveTab(index)}
@@ -71,7 +71,7 @@ const QualityTerminal = () => {
               <h3>{tabData[activeTab].title}</h3>
               <span className="status-badge">VERIFIED STANDARD</span>
             </div>
-            
+
             <div className="viewer-content">
               {tabData[activeTab].specs.map((spec, i) => (
                 <div className="spec-row" key={i}>
@@ -80,7 +80,7 @@ const QualityTerminal = () => {
                 </div>
               ))}
             </div>
-            
+
           </div>
 
         </div>
