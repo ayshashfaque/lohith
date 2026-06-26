@@ -59,11 +59,12 @@
   position: absolute;
   bottom: 0;
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .indicator {
-  width: 40px;
+  width: 24px;
   height: 2px;
   background-color: var(--color-border-gray);
   cursor: pointer;
@@ -235,4 +236,26 @@
   .social-proof-faq {
     padding-bottom: 60px;
   }
+}
+
+/* ─── Endorsement star ratings ───────────────────────── */
+.endorsement-stars {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.e-star {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.e-star.filled {
+  fill: #ffc107;
+  filter: drop-shadow(0 0 3px rgba(255, 193, 7, 0.5));
+}
+
+.e-star.empty {
+  fill: rgba(255, 255, 255, 0.15);
 }

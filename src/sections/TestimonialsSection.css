@@ -42,13 +42,17 @@
 
 .play-button-overlay {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 80px; height: 80px;
+  width: 80px;
+  height: 80px;
   background: rgba(10, 10, 10, 0.7);
   border: 2px solid var(--text-primary);
   border-radius: 50%;
-  display: flex; justify-content: center; align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease;
 }
 
@@ -58,7 +62,8 @@
 }
 
 .play-triangle {
-  width: 0; height: 0;
+  width: 0;
+  height: 0;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
   border-left: 22px solid var(--text-primary);
@@ -88,7 +93,8 @@
 .testimonial-quote::before {
   content: '"';
   position: absolute;
-  top: -40px; left: -20px;
+  top: -40px;
+  left: -20px;
   font-size: 120px;
   color: var(--border-color);
   z-index: -1;
@@ -135,4 +141,34 @@
     grid-template-columns: 1fr;
     gap: 48px;
   }
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.star-icon {
+  width: 20px;
+  height: 20px;
+  transition: fill 0.2s ease;
+  flex-shrink: 0;
+}
+
+.star-icon.filled {
+  fill: #ffc107;
+  filter: drop-shadow(0 0 4px rgba(255, 193, 7, 0.5));
+}
+
+.star-icon.empty {
+  fill: rgba(255, 255, 255, 0.15);
+}
+
+/* Initials avatar: square crop with no object-fit distortion */
+.video-thumbnail.avatar-mode {
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  background-color: #0e1014;
+  padding: 0;
 }

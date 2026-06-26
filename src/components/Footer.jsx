@@ -3,21 +3,67 @@ import './Footer.css';
 
 const testimonials = [
   {
-    quote: "The attention to structural detail is unparalleled. They delivered our bespoke villa in ECR exactly on schedule, with zero cost overruns.",
-    author: "Dr. Vikram S.",
-    role: "Client, Courtyard Villas"
+    quote: "The level of transparency we experienced was unprecedented. They didn't just build us a house; they engineered a sanctuary for our family without a single hidden cost.",
+    author: "Mr. Raghavan & Family",
+    role: "Lohith Prime, Adyar",
+    rating: 5
   },
   {
-    quote: "Lohith Construction brings a level of corporate transparency rarely seen in residential real estate. Flawless execution from blueprint to handover.",
-    author: "Priya R.",
-    role: "Client, Lohith Prime"
+    quote: "What impressed me most was the dedicated engineer on site. Every question was answered immediately, and the material quality exceeded our expectations.",
+    author: "Mrs. Meenakshi",
+    role: "The Courtyard Villas, ECR",
+    rating: 5
   },
   {
-    quote: "We chose them for their absolute refusal to compromise on core materials. The 15-year warranty isn't just paper; it's the build quality speaking.",
-    author: "Arjun M.",
-    role: "Client, Custom Residential"
+    quote: "Superior quality, customer friendly and on time delivery.",
+    author: "Aru A",
+    role: "Verified Client",
+    rating: 5
+  },
+  {
+    quote: "Prompt service and professional approach throughout the build process.",
+    author: "Isaivani S",
+    role: "Verified Client",
+    rating: 5
+  },
+  {
+    quote: "Good experience overall, satisfied with the execution.",
+    author: "Kathir S",
+    role: "Verified Client",
+    rating: 4
+  },
+  {
+    quote: "Excellent construction quality and reliable management.",
+    author: "Srini Vasan",
+    role: "Verified Client",
+    rating: 5
+  },
+  {
+    quote: "Highly professional team. The finishing standards are highly commendable.",
+    author: "Mani",
+    role: "Verified Client",
+    rating: 5
+  },
+  {
+    quote: "Great attention to structural detail and reliable delivery timelines.",
+    author: "Karthikeyan G R S",
+    role: "Verified Client",
+    rating: 5
   }
 ];
+
+// Render 5 SVG stars — gold filled, translucent empty
+const StarRating = ({ rating }) => (
+  <div className="endorsement-stars">
+    {Array.from({ length: 5 }, (_, i) => (
+      <svg key={i} viewBox="0 0 24 24" className={`e-star ${i < rating ? 'filled' : 'empty'}`}>
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+      </svg>
+    ))}
+  </div>
+);
+
+
 
 const faqs = [
   {
@@ -59,13 +105,14 @@ const Footer = () => {
         <div className="container spf-container">
           
           <div className="testimonials-col">
-            <div className="micro-label">✦ CLIENT ENDORSEMENTS</div>
+            <div className="micro-label">✦ CUSTOMER TESTIMONIALS</div>
             <div className="testimonial-carousel">
               {testimonials.map((test, index) => (
                 <div 
                   key={index} 
                   className={`testimonial-slide ${index === currentTestimonial ? 'active' : ''}`}
                 >
+                  <StarRating rating={test.rating} />
                   <p className="testimonial-quote">"{test.quote}"</p>
                   <div className="testimonial-author">
                     <span className="author-name">{test.author}</span>
@@ -84,6 +131,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
+
 
           <div className="faq-col">
             <div className="micro-label">✦ FREQUENTLY ASKED</div>

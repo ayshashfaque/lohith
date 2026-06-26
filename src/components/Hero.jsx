@@ -14,7 +14,7 @@ const Hero = () => {
           if (entry.isIntersecting) {
             // Restart from the beginning every time the hero scrolls back into view
             video.currentTime = 0;
-            video.play().catch(() => {});
+            video.play().catch(() => { });
           } else {
             video.pause();
           }
@@ -35,16 +35,16 @@ const Hero = () => {
         muted
         playsInline
         preload="auto"
-        /* No loop, no poster, no autoPlay — IntersectionObserver handles playback */
+      /* No loop, no poster, no autoPlay — IntersectionObserver handles playback */
       >
         <source src="/assets/video_202606251435.mp4" type="video/mp4" />
       </video>
-      
+
       <div className="hero-content container">
         <div className="micro-label">✦ ESTABLISHED 2007</div>
         <h1 className="hero-title">LOHITH CONSTRUCTION</h1>
         <p className="hero-subtitle">
-          Chennai's Premier Architectural Construction & Luxury Engineering Firm. We build custom luxury apartments and structural villas engineered to last for generations—backed by a 15-year structural warranty and handled by an entirely in-house team with zero subcontracting.
+          Chennai's Number One Construction Company.
         </p>
         <div className="hero-actions">
           <button className="btn btn-gold">Request Estimate</button>
