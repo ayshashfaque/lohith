@@ -1,0 +1,238 @@
+.social-proof-faq {
+  padding-bottom: 120px;
+}
+
+.spf-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.testimonial-carousel {
+  margin-top: 40px;
+  position: relative;
+  min-height: 250px;
+}
+
+.testimonial-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.testimonial-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.testimonial-quote {
+  font-size: 1.5rem;
+  color: var(--color-off-white);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-amber-gold);
+}
+
+.author-role {
+  font-size: 0.85rem;
+  color: var(--color-smoke-gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.indicator {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-border-gray);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: var(--color-amber-gold);
+}
+
+.faq-accordion {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-gray);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  color: var(--color-off-white);
+  font-size: 1.1rem;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover, .faq-question.open {
+  color: var(--color-amber-gold);
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer.open {
+  max-height: 200px;
+  padding-bottom: 24px;
+}
+
+.faq-answer p {
+  color: var(--color-smoke-gray);
+  font-size: 0.95rem;
+}
+
+/* Footer Styles */
+.footer {
+  padding-top: 80px;
+  background-color: #080808;
+  border-top: 1px solid var(--color-border-gray);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--color-off-white);
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  color: var(--color-smoke-gray);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.footer-cert {
+  color: var(--color-amber-gold);
+  font-size: 0.8rem;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+}
+
+.links-col h4 {
+  font-size: 1rem;
+  color: var(--color-off-white);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.links-col a {
+  display: block;
+  color: var(--color-smoke-gray);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
+
+.links-col a:hover {
+  color: var(--color-amber-gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 24px 0;
+}
+
+.fb-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fb-container p {
+  font-size: 0.8rem;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1024px) {
+  .spf-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .testimonial-quote {
+    font-size: 1.25rem;
+  }
+  .fb-container {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .footer {
+    padding-top: 60px;
+  }
+  .faq-question {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .testimonial-quote {
+    font-size: 1.05rem;
+  }
+  .footer-logo {
+    font-size: 1.5rem;
+  }
+  .social-proof-faq {
+    padding-bottom: 60px;
+  }
+}

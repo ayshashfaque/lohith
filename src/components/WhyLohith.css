@@ -1,0 +1,63 @@
+.wl-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.wl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.wl-card {
+  background-color: #0e1014;
+  border: 1px solid #2e3440;
+  padding: 32px;
+  border-radius: 4px;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.wl-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-amber-gold);
+  box-shadow: 0 10px 30px rgba(255, 179, 0, 0.05);
+}
+
+.card-number {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-border-gray);
+  margin-bottom: 24px;
+  transition: color 0.4s ease;
+}
+
+.wl-card:hover .card-number {
+  color: var(--color-amber-gold);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--color-off-white);
+  margin-bottom: 16px;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--color-smoke-gray);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .wl-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .wl-grid {
+    grid-template-columns: 1fr;
+  }
+}

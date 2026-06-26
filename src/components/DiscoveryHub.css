@@ -1,0 +1,255 @@
+.dh-header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Full-width section background: architectural blueprint grid
+   The pattern is applied directly on .discovery-hub so the
+   glass container floats elegantly above it.
+   ───────────────────────────────────────────────────────────── */
+.discovery-hub {
+  /* Override section-even background so we can layer the pattern */
+  background-color: var(--color-charcoal);
+
+  /* Blueprint grid — crisp, very faint architectural grey lines */
+  background-image:
+    /* Primary grid */
+    linear-gradient(rgba(180, 195, 200, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 195, 200, 0.07) 1px, transparent 1px),
+    /* Sub-grid (half-step) for a denser blueprint feel */
+    linear-gradient(rgba(180, 195, 200, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 195, 200, 0.03) 1px, transparent 1px);
+  background-size:
+    60px 60px,
+    60px 60px,
+    30px 30px,
+    30px 30px;
+  background-position: center center;
+}
+
+/* Subtle diagonal cross-hatch accent (adds depth to the blueprint) */
+.discovery-hub::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(160, 185, 190, 0.025) 0px,
+      rgba(160, 185, 190, 0.025) 1px,
+      transparent 1px,
+      transparent 42px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient amber radial glow — very faint, just warm lighting */
+.discovery-hub::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(255, 179, 0, 0.04) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Glass panel floats above the pattern ────────────────── */
+.dh-glass-panel {
+  background: rgba(14, 14, 14, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 179, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  position: relative;
+  z-index: 2;
+}
+
+/* Amber top-edge accent line on the panel */
+.dh-glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-amber-gold) 40%, var(--color-amber-gold) 60%, transparent 100%);
+  z-index: 3;
+}
+
+/* ─── Toggle switch ─────────────────────────────────────── */
+.dh-toggle-switch {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 24px;
+  color: var(--color-smoke-gray);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background: rgba(10, 10, 10, 0.4);
+  transition: all 0.3s ease;
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--color-off-white);
+}
+
+.toggle-btn.active {
+  color: var(--color-amber-gold);
+  background: rgba(14, 14, 14, 0.8);
+  box-shadow: inset 0 2px 0 var(--color-amber-gold);
+}
+
+/* ─── Content area ─────────────────────────────────────── */
+.dh-content-area {
+  padding: 60px;
+  min-height: 450px;
+}
+
+.dh-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-group label {
+  color: var(--color-off-white);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ─── HQ / Map state ─────────────────────────────────── */
+.dh-hq {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  height: 100%;
+  min-height: 330px;
+}
+
+.hq-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hq-title {
+  font-size: 2rem;
+  color: var(--color-off-white);
+  margin-bottom: 24px;
+}
+
+.hq-address {
+  font-size: 1.1rem;
+  color: var(--color-smoke-gray);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.hq-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border-gray);
+}
+
+.hq-contact-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.hq-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-smoke-gray);
+}
+
+.hq-value {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-amber-gold);
+}
+
+.hq-map {
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 300px;
+  border: 1px solid var(--color-border-gray);
+}
+
+.hq-map iframe {
+  filter: none;
+}
+
+/* ─── Mobile ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dh-content-area {
+    padding: 28px 20px;
+    min-height: auto;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dh-hq {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    min-height: auto;
+  }
+
+  .hq-map {
+    min-height: 250px;
+  }
+
+  .dh-toggle-switch {
+    flex-direction: column;
+  }
+
+  .toggle-btn {
+    padding: 18px;
+    font-size: 0.9rem;
+  }
+}

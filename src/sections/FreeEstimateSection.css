@@ -1,0 +1,135 @@
+.estimate-section {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.estimate-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-title {
+  font-size: 40px;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.estimate-form {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  padding: 64px;
+  border: 1px solid var(--border-color);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group.full-width {
+  grid-column: 1 / -1;
+  margin-bottom: 48px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+input, select, textarea {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: var(--bg-primary);
+}
+
+input[aria-invalid="true"], select[aria-invalid="true"] {
+  border-color: #ef4444;
+}
+
+.error-msg {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 8px;
+  display: block;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.large-cta {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  font-size: 16px;
+}
+
+.alert-box {
+  max-width: 800px;
+  margin: 0 auto 48px;
+  padding: 48px;
+  text-align: center;
+  border: 1px solid;
+  background-color: var(--bg-primary);
+}
+
+.alert-box.success {
+  border-color: var(--accent-color);
+}
+.alert-box.success h3 {
+  color: var(--accent-color);
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.alert-box.error {
+  border-color: #ef4444;
+}
+.alert-box.error h3 {
+  color: #ef4444;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.alert-box p {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .estimate-form {
+    padding: 32px 24px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-title {
+    font-size: 32px;
+  }
+}

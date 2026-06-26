@@ -1,0 +1,54 @@
+/* src/styles/designTokens.css */
+:root {
+  /* Color palette */
+  --bg-odd: #0a0a0a;   /* Deep pitch black */
+  --bg-even: #0e0e0e;  /* Dark charcoal */
+  --accent-gold: #ffb300; /* Amber gold */
+  --text-primary: #f5f5f5;
+  --text-secondary: #a8a8a8;
+  --border-dark: #262626;
+
+  /* Typography */
+  --font-header: 'Outfit', sans-serif; /* For headings */
+  --font-body: 'Public Sans', sans-serif; /* Updated body font */
+  --line-height-body: 1.6;
+
+  /* Spacing */
+  --section-max-width: 1400px;
+  --section-padding: 4rem 2rem;
+}
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: var(--line-height-body);
+  background-color: var(--bg-odd);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.container {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}

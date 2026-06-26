@@ -1,0 +1,107 @@
+.floor-plans-section {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.floor-plans-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.floor-plans-split {
+  display: flex;
+  gap: 48px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+.plan-selectors {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+}
+
+.plan-selector-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding: 40px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-selector-btn:last-child {
+  border-bottom: none;
+}
+
+.plan-selector-btn:hover {
+  background-color: rgba(255, 179, 0, 0.03);
+}
+
+.plan-selector-btn.active {
+  background-color: rgba(255, 179, 0, 0.05);
+  box-shadow: inset 4px 0 0 var(--accent-color);
+}
+
+.plan-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.plan-specs {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.plan-display {
+  flex: 2;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.blueprint-container {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  min-height: 400px;
+}
+
+.vector-blueprint {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.plan-action {
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .floor-plans-split {
+    flex-direction: column;
+    gap: 0;
+  }
+  .plan-selectors {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .blueprint-container {
+    min-height: 300px;
+  }
+}
