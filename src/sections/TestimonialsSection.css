@@ -9,10 +9,15 @@
 }
 
 .testimonial-carousel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  width: max-content;
   gap: 80px;
+  animation: marquee 30s linear infinite;
   align-items: center;
+}
+
+.testimonial-carousel:hover {
+  animation-play-state: paused;
 }
 
 .testimonial-video-col {

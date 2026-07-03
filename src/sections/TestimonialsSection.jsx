@@ -124,7 +124,7 @@ export default function TestimonialsSection() {
           <h2 className="section-title">CLIENT REVIEWS</h2>
         </div>
 
-        <div className="testimonial-carousel">
+        <marquee className="testimonial-marquee">
           <div className="testimonial-video-col">
             <div className="video-thumbnail-wrapper">
               <img
@@ -164,6 +164,7 @@ export default function TestimonialsSection() {
               <button className="btn-secondary">Read More Stories</button>
             </div>
           </div>
+        </marquee>
         </div>
 
       </div>

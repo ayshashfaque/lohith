@@ -55,16 +55,16 @@ export default function ProjectsSection() {
                   <button className="view-project-btn">View Project</button>
                 </div>
               </div>
-              <div className="project-details">
-                <h3 className="project-title">{project.title}</h3>
-                <div className="project-meta">
-                  <span>{project.location}</span>
-                  <span className="separator">•</span>
-                  <span>{project.area}</span>
-                  <span className="separator">•</span>
-                  <span className="status">{project.status}</span>
-                </div>
-              </div>
+               <div className="project-details">
+                 <h3 className="project-title">{project.title}</h3>
+                 <div className="project-location">
+                   {project.location}
+                 </div>
+                 <div className="project-bottom">
+                   <span className="status-badge">{project.status}</span>
+                   <button className="btn-primary view-details-btn">View Details</button>
+                 </div>
+               </div>
             </div>
           ))}
         </div>

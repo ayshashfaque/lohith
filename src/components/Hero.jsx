@@ -12,35 +12,36 @@ const Hero = () => {
 
     const ctx = canvas.getContext('2d');
 
-    // ── Step 1: Capture first frame as soon as the browser has it ──
     const captureFirstFrame = () => {
       canvas.width = video.videoWidth || 1920;
       canvas.height = video.videoHeight || 1080;
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      // Canvas now holds the exact first frame — it acts as a static poster
-      canvas.style.opacity = '1';
+      try {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      } catch (e) {
+        // Fallback if video isn't ready
+      }
     };
 
-    // ── Step 2: Fade canvas out once the video begins playing ──
-    const fadeOutCanvas = () => {
-      canvas.style.transition = 'opacity 0.4s ease';
-      canvas.style.opacity = '0';
-    };
-
-    // loadeddata fires when frame 0 is available (before full load)
     video.addEventListener('loadeddata', captureFirstFrame);
-    video.addEventListener('playing', fadeOutCanvas);
 
-    // ── Step 3: IntersectionObserver — restart + play when in view ──
+    // Play video automatically
+    const playVideo = () => {
+      video.play().catch(() => {});
+    };
+    
+    // Trigger video play
+    if (video.readyState >= 2) {
+      captureFirstFrame();
+      playVideo();
+    } else {
+      video.addEventListener('canplay', playVideo);
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Reset canvas opacity so it shows the first frame again on re-entry
-            canvas.style.transition = 'none';
-            canvas.style.opacity = '1';
-            video.currentTime = 0;
-            video.play().catch(() => { });
+            video.play().catch(() => {});
           } else {
             video.pause();
           }
@@ -53,40 +54,44 @@ const Hero = () => {
 
     return () => {
       video.removeEventListener('loadeddata', captureFirstFrame);
-      video.removeEventListener('playing', fadeOutCanvas);
+      video.removeEventListener('canplay', playVideo);
       observer.disconnect();
     };
   }, []);
 
   return (
     <section className="hero-section" id="home">
-      {/*
-        Canvas sits above the video and holds frame 0 as a static image.
-        It starts invisible (opacity:0 in CSS) and is set to 1 once
-        captureFirstFrame() runs — then fades to 0 when the video plays.
-        This eliminates the black flash entirely.
-      */}
-      <canvas ref={canvasRef} className="hero-frame-canvas" aria-hidden="true" />
+      
+      {/* Layer 1: Filtered Background Video & Canvas static poster */}
+      <div className="hero-media-wrapper">
+        <canvas ref={canvasRef} className="hero-frame-canvas" aria-hidden="true" />
+        <video
+          ref={videoRef}
+          className="hero-video"
+          muted
+          playsInline
+          loop
+          preload="auto"
+        >
+          <source src="/assets/videos/newhero.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-      <video
-        ref={videoRef}
-        className="hero-video"
-        muted
-        playsInline
-        preload="auto"
-      >
-        <source src="/assets/video_202606251435.mp4" type="video/mp4" />
-      </video>
+      {/* Layer 2: Legibility Shield (smooth charcoal gradient) */}
+      <div className="hero-legibility-shield" aria-hidden="true" />
 
-      <div className="hero-content container">
-        <div className="micro-label">✦ ESTABLISHED 2007</div>
-        <h1 className="hero-title">LOHITH CONSTRUCTION</h1>
-        <p className="hero-subtitle">
-          Chennai's No.1 Construction Company.
-        </p>
+      {/* Layer 3: Typography & Content */}
+      <div className="hero-content">
+        <div className="hero-typography">
+          <div className="micro-label hero-label">✦ ESTABLISHED 2007</div>
+          <h1 className="hero-title">LOHITH CONSTRUCTION</h1>
+          <p className="hero-subtitle">
+            Chennai's No.1 Construction Company.
+          </p>
+        </div>
         <div className="hero-actions">
-          <button className="btn btn-gold">Request Estimate</button>
-          <button className="btn btn-ghost">VIEW PROJECTS</button>
+          <a href="#connect" className="btn btn-gold">Request Estimate</a>
+          <a href="#portfolio" className="btn btn-ghost">VIEW PROJECTS</a>
         </div>
       </div>
     </section>

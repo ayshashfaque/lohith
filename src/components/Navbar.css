@@ -1,18 +1,79 @@
-.navbar {
+/* ─── Fixed Header Wrapper (Utility Bar + Navbar) ─── */
+.site-header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 100;
-  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+/* ─── Top Utility Bar ─── */
+.utility-bar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(13, 13, 13, 0.6));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 40px;
+}
+
+.utility-container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.utility-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #e5e5e5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.utility-link:hover {
+  color: var(--color-amber-gold);
+}
+
+.utility-icon {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.utility-link:hover .utility-icon {
+  color: var(--color-amber-gold);
+}
+
+/* ─── Main Navbar ─── */
+.navbar {
+  width: 100%;
+  padding: 18px 40px;
   background: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border-gray);
   transition: padding 0.3s ease, background 0.3s ease;
 }
 
-.navbar.scrolled {
-  padding: 15px 40px;
+.site-header.scrolled .navbar {
+  padding: 12px 40px;
   background: rgba(10, 10, 10, 0.95);
+}
+
+.site-header.scrolled .utility-bar {
+  height: 30px;
 }
 
 .navbar-container {
@@ -23,14 +84,42 @@
   align-items: center;
 }
 
+/* ─── Logo + Brand Text ─── */
 .navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.navbar-logo-img {
+  height: 56px;
+  width: auto;
+  border-radius: 4px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.navbar-logo:hover .navbar-logo-img {
+  transform: scale(1.04);
+  filter: brightness(1.12);
+}
+
+.navbar-logo-text {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   color: var(--color-off-white);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
+.navbar-logo:hover .navbar-logo-text {
+  color: var(--color-amber-gold);
+}
+
+/* ─── Nav Links ─── */
 .navbar-links {
   display: flex;
   gap: 28px;
@@ -56,6 +145,7 @@
   font-size: 0.85rem;
 }
 
+/* ─── Responsive ─── */
 @media (max-width: 1024px) {
   .navbar-links {
     gap: 20px;
@@ -67,17 +157,32 @@
     padding: 10px 16px;
     font-size: 0.78rem;
   }
+  .navbar-logo-text {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+  }
 }
 
 @media (max-width: 768px) {
+  .utility-bar {
+    padding: 0 20px;
+    height: 32px;
+  }
+  .utility-link span {
+    font-size: 11px;
+  }
   .navbar {
-    padding: 16px 20px;
+    padding: 14px 20px;
   }
   .navbar-links {
     display: none;
   }
-  .navbar-logo {
-    font-size: 1.2rem;
+  .navbar-logo-img {
+    height: 40px;
+  }
+  .navbar-logo-text {
+    font-size: 1rem;
+    letter-spacing: 3px;
   }
   .btn-sm {
     padding: 10px 16px;

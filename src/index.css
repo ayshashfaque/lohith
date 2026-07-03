@@ -1,3 +1,8 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 130px; /* Accounts for fixed header height (utility bar + navbar) */
+}
+
 :root {
   /* Tech-Noir Accent Palette */
   --color-pitch-black: #0a0a0a;
@@ -54,22 +59,27 @@ button {
 }
 
 /* System Structures */
+section[id],
 .section {
+  scroll-margin-top: 130px;
   padding: 100px 24px;
   position: relative;
   overflow: hidden;
 }
 
 .section-odd {
-  background-color: var(--color-pitch-black);
+  background-color: rgba(10, 10, 10, 0.35);
+  backdrop-filter: blur(2px);
 }
 
 .section-even {
-  background-color: var(--color-charcoal);
+  background-color: rgba(14, 14, 14, 0.45);
+  backdrop-filter: blur(2px);
 }
 
 .section-slate {
-  background-color: var(--color-dark-slate);
+  background-color: rgba(26, 30, 35, 0.5);
+  backdrop-filter: blur(2px);
 }
 
 .section-light {
