@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ currentView }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -56,9 +56,10 @@ const Navbar = () => {
             <span className="navbar-logo-text">LOHITH</span>
           </a>
           <div className="navbar-links">
-            <a href="#home">Home</a>
+            <a href="#home" className={currentView === 'home' ? 'active' : ''}>Home</a>
             <a href="#about">About</a>
             <a href="#portfolio">Portfolio</a>
+            <a href="#interiors" className={currentView === 'interiors' ? 'active' : ''}>Interiors</a>
             <a href="#engineering">Engineering</a>
             <a href="#values">Values</a>
             <a href="#materials">Materials</a>

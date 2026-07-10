@@ -1,0 +1,129 @@
+.interiors-page {
+  padding: 120px 24px 80px;
+  position: relative;
+  min-height: 80vh;
+}
+
+.interiors-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.interiors-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-off-white);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(255, 179, 0, 0.2);
+}
+
+.interiors-subheading {
+  font-size: 1.1rem;
+  color: var(--color-smoke-gray);
+  line-height: 1.6;
+}
+
+/* Asymmetric / Dynamic Premium Grid */
+.interiors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Individual Interior Card */
+.interior-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dynamic glow variation based on configuration */
+.interior-card.variant-1 { border-color: rgba(255, 179, 0, 0.15); }
+.interior-card.variant-2 { border-color: rgba(0, 240, 255, 0.15); }
+.interior-card.variant-3 { border-color: rgba(255, 64, 129, 0.15); }
+
+.interior-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Force strict vertical portrait lock */
+.interior-img-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 135%; /* 3:4 Aspect Ratio */
+  overflow: hidden;
+  background: #050505;
+}
+
+.interior-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.interior-card:hover .interior-img {
+  transform: scale(1.05);
+}
+
+/* Subtle lighting gradient overlay */
+.interior-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8));
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+}
+
+/* Text layer stacked strictly below image */
+.interior-details {
+  padding: 24px;
+  text-align: left;
+}
+
+.interior-headline {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.interior-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .interiors-page {
+    padding: 100px 16px 60px;
+  }
+  .interiors-title {
+    font-size: 2.2rem;
+  }
+  .interiors-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+}

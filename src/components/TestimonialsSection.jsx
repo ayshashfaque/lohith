@@ -1,61 +1,79 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './TestimonialsSection.css';
 
 const testimonials = [
   {
-    quote: "Wonderful service from start to finish. Our Munnar trip was perfectly organized and deeply relaxing.",
-    author: "Anjali Nair",
-    role: "Verified Buyer",
-    rating: 5
-  },
-  {
     quote: "The level of transparency we experienced was unprecedented. They didn't just build us a house; they engineered a sanctuary for our family without a single hidden cost.",
     author: "Mr. Raghavan & Family",
-    role: "Lohith Prime, Adyar",
-    rating: 5
+    initial: "R",
+    role: "Homeowner",
+    title: "Exceptional Quality",
+    rating: 5,
   },
   {
     quote: "What impressed me most was the dedicated engineer on site. Every question was answered immediately, and the material quality exceeded our expectations.",
     author: "Mrs. Meenakshi",
-    role: "The Courtyard Villas, ECR",
-    rating: 5
+    initial: "M",
+    role: "Property Developer",
+    title: "Outstanding Workmanship",
+    rating: 5,
   },
   {
-    quote: "Superior quality, customer friendly and on time delivery.",
+    quote: "Superior quality, customer friendly and on time delivery. The professional approach they maintained throughout the construction was outstanding.",
     author: "Aru A",
-    role: "Verified Client",
-    rating: 5
+    initial: "A",
+    role: "Commercial Client",
+    title: "Highly Recommended",
+    rating: 5,
   },
   {
-    quote: "Prompt service and professional approach throughout the build process.",
+    quote: "Prompt service and professional approach throughout the build process. Their team managed the project flawlessly from planning to final handover.",
     author: "Isaivani S",
-    role: "Verified Client",
-    rating: 5
+    initial: "I",
+    role: "Residential Project",
+    title: "Professional Team",
+    rating: 5,
   },
   {
-    quote: "Good experience overall, satisfied with the execution.",
+    quote: "Good experience overall, satisfied with the execution. They adhered to the schedule and completed the key milestones exactly when promised.",
     author: "Kathir S",
-    role: "Verified Client",
-    rating: 4
+    initial: "K",
+    role: "Industrial Project",
+    title: "Delivered on Time",
+    rating: 5,
   },
   {
-    quote: "Excellent construction quality and reliable management.",
+    quote: "Excellent construction quality and reliable management. The structural integrity and finishing standards are truly commendable.",
     author: "Srini Vasan",
-    role: "Verified Client",
-    rating: 5
+    initial: "S",
+    role: "Renovation Client",
+    title: "Excellent Construction Service",
+    rating: 5,
   },
   {
-    quote: "Highly professional team. The finishing standards are highly commendable.",
+    quote: "Highly professional team. The finishing standards are highly commendable, and their cost-transparency made the entire process stress-free.",
     author: "Mani",
-    role: "Verified Client",
-    rating: 5
+    initial: "M",
+    role: "Business Owner",
+    title: "Reliable & Trustworthy",
+    rating: 5,
   },
   {
-    quote: "Great attention to structural detail and reliable delivery timelines.",
+    quote: "Great attention to structural detail and reliable delivery timelines. I would suggest Lohith Construction to anyone looking for hassle-free building.",
     author: "Karthikeyan G R S",
-    role: "Verified Client",
-    rating: 5
-  }
+    initial: "K",
+    role: "Homeowner",
+    title: "Highly Recommended",
+    rating: 5,
+  },
+];
+
+const badgeColors = [
+  '#d4af37', // Gold
+  '#1a365d', // Dark Blue
+  '#2f855a', // Green
+  '#4a5568', // Grey
+  '#dd6b20', // Orange
 ];
 
 const StarRating = ({ rating }) => (
@@ -68,128 +86,125 @@ const StarRating = ({ rating }) => (
   </div>
 );
 
-const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(3);
-  const [isPaused, setIsPaused] = useState(false);
-  const timerRef = useRef(null);
+const ParticleCanvas = () => {
+  const canvasRef = useRef(null);
 
-  // Responsive items-per-view detection
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setItemsPerView(1);
-      } else if (window.innerWidth <= 1024) {
-        setItemsPerView(2);
-      } else {
-        setItemsPerView(3);
-      }
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animId;
+    let particles = [];
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
     };
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    resize();
+    window.addEventListener('resize', resize);
 
-  const totalSlides = Math.ceil(testimonials.length / itemsPerView);
-
-  // Auto-scroll loop
-  useEffect(() => {
-    if (isPaused) {
-      if (timerRef.current) clearInterval(timerRef.current);
-      return;
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.5 + 0.5,
+      });
     }
 
-    timerRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % totalSlides);
-    }, 4500);
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 179, 0, 0.3)';
+        ctx.fill();
+      }
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(255, 179, 0, ${0.08 * (1 - dist / 150)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
     };
-  }, [totalSlides, isPaused]);
+  }, []);
 
-  const handleDotClick = (index) => {
-    setCurrentIndex(index);
-  };
+  return <canvas ref={canvasRef} className="t-particle-canvas" />;
+};
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalSlides);
-  };
-
+const TestimonialsSection = () => {
   return (
-    <section className="section section-odd testimonials-section" id="testimonials">
+    <section className="t-section" id="testimonials">
+      <ParticleCanvas />
       <div className="container">
-        
-        {/* Review rating header summary */}
-        <div className="testimonials-header">
-          <div className="endorsement-headline-badge">
-            <span className="stars-glow">⭐⭐⭐⭐⭐</span>
-            <span className="badge-text">Based on 100+ Happy Homeowners</span>
-          </div>
-          <h2 className="section-title testimonials-title">CLIENT ENDORSEMENTS</h2>
-          <p className="testimonials-subheading">Unfiltered testimonials highlighting our structural precision and absolute cost-transparency.</p>
+        <div className="t-header">
+          <h2 className="t-title">Trusted by Our Clients</h2>
+          <p className="t-subheading">
+            See what homeowners, businesses, and developers have to say about our quality workmanship and reliable service.
+          </p>
         </div>
 
-        {/* Carousel Container */}
-        <div 
-          className="testimonials-carousel-wrapper"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          
-          <button className="t-nav-arrow left" onClick={handlePrev} aria-label="Previous testimonials">
-            &#8592;
-          </button>
-
-          <div className="t-cards-window">
-            <div 
-              className="t-cards-track"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-                transition: 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
-              }}
-            >
-              {testimonials.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="t-card"
-                  style={{ width: `${100 / itemsPerView}%` }}
-                >
-                  <div className="t-card-content">
-                    <StarRating rating={item.rating} />
-                    <p className="t-quote">"{item.quote}"</p>
-                    <div className="t-author-details">
-                      <span className="t-name">{item.author}</span>
-                      <span className="t-role">{item.role}</span>
-                    </div>
+        <div className="t-grid">
+          {testimonials.map((item, index) => {
+            const badgeBg = badgeColors[index % badgeColors.length];
+            return (
+              <div key={index} className="t-card">
+                <div className="t-badge-container">
+                  <div className="t-initial-badge" style={{ backgroundColor: badgeBg }}>
+                    {item.initial}
                   </div>
                 </div>
-              ))}
+                <div className="t-stars-wrapper">
+                  <StarRating rating={item.rating} />
+                </div>
+                <h4 className="t-card-title">{item.title}</h4>
+                <p className="t-quote">"{item.quote}"</p>
+                <div className="t-client-info">
+                  <span className="t-client-name">{item.author}</span>
+                  <span className="t-client-role">{item.role}</span>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* View More Reviews Card */}
+          <a
+            href="https://www.google.com/search?q=lohith+construction+chennai+reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="t-card t-card-viewmore"
+          >
+            <div className="t-viewmore-icon-wrapper">
+              <svg className="t-viewmore-arrow" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
             </div>
-          </div>
-
-          <button className="t-nav-arrow right" onClick={handleNext} aria-label="Next testimonials">
-            &#8594;
-          </button>
-
+            <div className="t-viewmore-text">
+              <h3 className="t-viewmore-heading">View More</h3>
+              <p className="t-viewmore-sub">Read More Client Reviews</p>
+            </div>
+          </a>
         </div>
-
-        {/* Carousel indicators */}
-        <div className="t-indicators">
-          {Array.from({ length: totalSlides }).map((_, idx) => (
-            <button
-              key={idx}
-              className={`t-indicator ${idx === currentIndex ? 'active' : ''}`}
-              onClick={() => handleDotClick(idx)}
-              aria-label={`Go to slide group ${idx + 1}`}
-            />
-          ))}
-        </div>
-
       </div>
     </section>
   );
