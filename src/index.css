@@ -3,6 +3,11 @@ html {
   scroll-padding-top: 130px; /* Accounts for fixed header height (utility bar + navbar) */
 }
 
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 :root {
   /* Tech-Noir Accent Palette */
   --color-pitch-black: #0a0a0a;
@@ -189,8 +194,17 @@ section[id],
 
 /* ─── Global Mobile Responsiveness ──────────────────────── */
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+
   .section {
     padding: 60px 20px;
+  }
+
+  section[id] {
+    padding: 60px 20px;
+    scroll-margin-top: 90px;
   }
 
   .section-title {
@@ -214,5 +228,14 @@ section[id],
   .btn {
     padding: 14px 24px;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: 70px; /* Utility bar hidden on phones, navbar shorter */
+  }
+  section[id] {
+    scroll-margin-top: 70px;
   }
 }

@@ -6,29 +6,57 @@ const projectsData = [
     id: "lohith-selvan",
     name: "Lohith Selvan Flats",
     location: "Medavakkam, Chennai",
-    image: "/projects/bc5ea388-f91a-4d9c-9c3b-a7c45e653aec.jpeg",
+    image: "/projects/IMG_2758.jpeg",
     isSoldOut: false
   },
   {
-    id: "happy-homes",
-    name: "Happy Homes",
-    location: "Perumbakkam, Chennai",
-    image: "/projects/IMG_2758.jpeg",
+    id: "vedanth-vihar",
+    name: "Vedanth Vihar",
+    location: "Chennai",
+    image: "/projects/ved.jpg",
     isSoldOut: false
   },
   {
     id: "dar-al-barakah",
     name: "Dar Al-Barakah",
     location: "Perumbakkam, Chennai",
-    image: "/projects/4be8e3c9-f4b4-40a2-85f9-dedb3bd184a3.jpeg",
+    image: "/projects/dar.jpg",
     isSoldOut: false
   },
   {
-    id: "individual-villa",
+    id: "individual-house-medavakkam",
+    name: "Individual House",
+    location: "Medavakkam, Chennai",
+    image: "/projects/bc5ea388-f91a-4d9c-9c3b-a7c45e653aec.jpeg",
+    isSoldOut: false
+  },
+  {
+    id: "individual-house-anna",
     name: "Individual House",
     location: "Anna Nagar, Chennai",
-    image: "/projects/IMG_2760.jpeg",
-    isSoldOut: true
+    image: "/projects/anna.jpg",
+    isSoldOut: false
+  },
+  {
+    id: "individual-house-sho",
+    name: "Individual House",
+    location: "Sholinganallur, Chennai",
+    image: "/projects/sho.jpg",
+    isSoldOut: false
+  },
+  {
+    id: "individual-house-po",
+    name: "Individual House",
+    location: "Ponmar, Chennai",
+    image: "/projects/po.jpg",
+    isSoldOut: false
+  },
+  {
+    id: "happy-homes",
+    name: "Happy Homes",
+    location: "Perumbakkam, Chennai",
+    image: "/projects/goldencastle.png",
+    isSoldOut: false
   }
 ];
 

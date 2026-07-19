@@ -45,11 +45,11 @@
   line-height: 1.65;
 }
 
-/* ─── Grid (Aligned Row Layout) ────────────────────────── */
+/* ─── Grid (Aligned Row Layout) ────────────────── */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns on Desktop (2 rows of 5 for 10 images) */
-  gap: 24px; /* Uniform spacing */
+  grid-template-columns: repeat(4, 1fr); /* 4 columns on Desktop (4 rows of 4 for 16 images) */
+  gap: 24px;
   position: relative;
   z-index: 1;
 }
@@ -119,6 +119,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: contrast(1.07) brightness(0.9) saturate(1.12) sepia(0.1);
+  transition: filter 0.4s ease;
 }
 
 /* Back Side (Details) */

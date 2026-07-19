@@ -73,7 +73,7 @@ const Hero = () => {
           loop
           preload="auto"
         >
-          <source src="/assets/videos/newhero.mp4" type="video/mp4" />
+          <source src="/assets/videos/myhero.mp4" type="video/mp4" />
         </video>
       </div>
 
