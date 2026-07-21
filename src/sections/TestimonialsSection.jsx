@@ -165,7 +165,6 @@ export default function TestimonialsSection() {
             </div>
           </div>
         </marquee>
-        </div>
 
       </div>
     </section>

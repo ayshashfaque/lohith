@@ -53,7 +53,7 @@ const Navbar = ({ currentView }) => {
         <div className="navbar-container">
           <a href="#home" className="navbar-logo">
             <img src="/assets/images/newlogo.jpeg" alt="Lohith Construction" className="navbar-logo-img" />
-            <span className="navbar-logo-text">LOHITH</span>
+            <span className="navbar-logo-text">LOHITH CONSTRUCTION</span>
           </a>
           <div className="navbar-links">
             <a href="#home" className={currentView === 'home' ? 'active' : ''}>Home</a>

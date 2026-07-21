@@ -45,14 +45,14 @@ const galleryImages = [
     category: 'Bathroom'
   },
   {
-    src: '/projects/1 (5).jpeg',
-    title: 'Modernist Foyer',
-    location: 'Velachery, Chennai',
-    desc: 'A high-impact entry space with custom structural metal elements and premium geometric stone flooring.',
-    category: 'Foyer'
+    src: '/projects/1 (6).jpeg',
+    title: 'Veranda Lounge',
+    location: 'Sholinganallur, Chennai',
+    desc: 'Semi-outdoor relaxation deck integrating natural landscaping with premium weather-resistant finishes.',
+    category: 'Outdoor'
   },
   {
-    src: '/projects/IMG_3318.jpeg',
+    src: '/projects/jap.jpeg',
     title: 'Skyline Penthouse',
     location: 'Nungambakkam, Chennai',
     desc: 'Double-volume ceiling heights featuring premium floor-to-ceiling panoramic glass work and open-plan living.',
@@ -66,11 +66,11 @@ const galleryImages = [
     category: 'Kitchen'
   },
   {
-    src: '/projects/1 (6).jpeg',
-    title: 'Veranda Lounge',
-    location: 'Sholinganallur, Chennai',
-    desc: 'Semi-outdoor relaxation deck integrating natural landscaping with premium weather-resistant finishes.',
-    category: 'Outdoor'
+    src: '/projects/1 (5).jpeg',
+    title: 'Modernist Foyer',
+    location: 'Velachery, Chennai',
+    desc: 'A high-impact entry space with custom structural metal elements and premium geometric stone flooring.',
+    category: 'Foyer'
   },
   {
     src: '/projects/1 (4).jpeg',
@@ -146,7 +146,6 @@ const GalleryCard = ({ img, index }) => {
           <div className="gallery-back-content">
             <span className="gallery-card-tag">{img.category}</span>
             <h3 className="gallery-card-title">{img.title}</h3>
-            <span className="gallery-card-location">📍 {img.location}</span>
             <div className="gallery-divider" />
             <p className="gallery-card-desc">{img.desc}</p>
           </div>
