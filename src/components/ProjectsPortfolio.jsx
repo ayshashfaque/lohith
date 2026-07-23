@@ -28,7 +28,7 @@ const projectsData = [
     id: "individual-house-dar",
     name: "Individual House",
     location: "Perumbakkam, Chennai",
-    image: "/projects/dar.jpeg",
+    image: "/projects/dar.jpg",
     isSoldOut: false
   },
   {
