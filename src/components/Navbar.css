@@ -177,25 +177,40 @@
   .navbar, .site-header.scrolled .navbar {
     padding: 14px 16px !important;
   }
+  .navbar-container {
+    width: 100%;
+    gap: 12px; /* Force visible gap/spacing so logo and button never touch */
+  }
   .navbar-links {
     display: none;
+  }
+  .navbar-logo {
+    flex-shrink: 1; /* Allow logo container to shrink if space is tight */
+    min-width: 0;
+    gap: 8px; /* Reduce gap between image and text */
   }
   .navbar-logo-img {
     height: 44px;
     display: block !important;
     visibility: visible !important;
+    flex-shrink: 0; /* Maintain image size */
   }
   .navbar-logo-text, .site-header.scrolled .navbar-logo-text {
-    font-size: 0.95rem !important;
-    letter-spacing: 1px !important;
+    font-size: 0.9rem !important; /* Scale down brand text font size */
+    letter-spacing: 0.5px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Allow truncation with ellipsis if space is tight */
+    flex-shrink: 1;
+    min-width: 0;
   }
   .btn-sm, .site-header.scrolled .btn-sm {
     padding: 10px 16px !important;
     font-size: 0.78rem !important;
   }
   .navbar-cta, .site-header.scrolled .navbar-cta {
-    flex-shrink: 0 !important;
-    margin-right: 0 !important;
+    flex-shrink: 0 !important; /* Keep button from shrinking */
+    margin-right: 0 !important; /* Ensure it stays grounded at the right edge of container */
   }
 }
 
@@ -204,11 +219,17 @@
     display: none; /* Hide utility bar on phones to save vertical space */
   }
   .navbar, .site-header.scrolled .navbar {
-    padding: 12px 16px !important;
+    padding: 12px 16px !important; /* 16px horizontal padding keeps the button grounded inside the viewport */
+  }
+  .navbar-container {
+    gap: 8px; /* Minimum gap between logo and button on very small screens */
+  }
+  .navbar-logo {
+    gap: 6px;
   }
   .navbar-logo-text, .site-header.scrolled .navbar-logo-text {
-    font-size: 0.85rem !important;
-    letter-spacing: 1px !important;
+    font-size: 0.75rem !important; /* Further scale down brand text on small screens */
+    letter-spacing: 0.5px !important;
   }
   .navbar-logo-img {
     height: 38px;
