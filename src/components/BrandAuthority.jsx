@@ -26,7 +26,7 @@ const BrandAuthority = () => {
             </div>
             <div className="metric-divider"></div>
             <div className="metric">
-              <span className="metric-value">15-Yr</span>
+              <span className="metric-value">30-Yr</span>
               <span className="metric-label">Structural Warranty</span>
             </div>
             <div className="metric-divider"></div>

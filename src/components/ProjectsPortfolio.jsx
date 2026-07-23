@@ -7,12 +7,13 @@ const projectsData = [
     name: "Lohith Selvan Flats",
     location: "Medavakkam, Chennai",
     image: "/projects/IMG_2758.jpeg",
-    isSoldOut: false
+    isSoldOut: false,
+    isReadyToMoveIn: true
   },
   {
     id: "vedanth-vihar",
     name: "Vedanth Vihar",
-    location: "Chennai",
+    location: "Medavakkam, Chennai",
     image: "/projects/ved.jpg",
     isSoldOut: false
   },
@@ -20,7 +21,21 @@ const projectsData = [
     id: "dar-al-barakah",
     name: "Dar Al-Barakah",
     location: "Perumbakkam, Chennai",
-    image: "/projects/dar.jpg",
+    image: "/projects/jj.jpeg",
+    isSoldOut: false
+  },
+  {
+    id: "individual-house-dar",
+    name: "Individual House",
+    location: "Perumbakkam, Chennai",
+    image: "/projects/dar.jpeg",
+    isSoldOut: false
+  },
+  {
+    id: "individual-house-indi",
+    name: "Individual House",
+    location: "Perumbakkam, Chennai",
+    image: "/projects/indi.jpeg",
     isSoldOut: false
   },
   {
@@ -39,7 +54,7 @@ const projectsData = [
   },
   {
     id: "individual-house-sho",
-    name: "Individual House",
+    name: "Aurelia",
     location: "Sholinganallur, Chennai",
     image: "/projects/sho.jpg",
     isSoldOut: false
@@ -56,7 +71,8 @@ const projectsData = [
     name: "Happy Homes",
     location: "Perumbakkam, Chennai",
     image: "/projects/goldencastle.png",
-    isSoldOut: false
+    isSoldOut: false,
+    isReadyToMoveIn: true
   }
 ];
 
@@ -94,6 +110,9 @@ const ProjectsPortfolio = () => {
                 />
                 {project.isSoldOut && (
                   <div className="portfolio-soldout-badge">SOLD OUT</div>
+                )}
+                {project.isReadyToMoveIn && (
+                  <div className="portfolio-ready-badge">Ready to Move In</div>
                 )}
               </div>
               <div className="portfolio-details">

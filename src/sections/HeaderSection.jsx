@@ -27,13 +27,13 @@ export default function HeaderSection() {
   return (
     <header className="header-section">
       <div className="container header-inner">
-        <div className="logo">LOHITH</div>
+        <div className="logo">LOHITH CONSTRUCTION</div>
         <nav className="nav-links desktop-only">
           {links.map(l => (
             <a key={l.id} href={`#${l.id}`} onClick={e => { e.preventDefault(); scrollTo(l.id); }}>{l.label}</a>
           ))}
         </nav>
-        <button className="btn-primary header-cta" onClick={() => scrollTo('free-estimate')}>Request Free Estimate</button>
+        <button className="btn-primary header-cta" onClick={() => scrollTo('free-estimate')}>REQUEST ESTIMATE</button>
         <button className="hamburger mobile-only" onClick={toggleMenu} aria-label="Menu">
           <span className="bar"></span>
           <span className="bar"></span>

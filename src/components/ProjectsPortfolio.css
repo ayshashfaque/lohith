@@ -117,6 +117,24 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+.portfolio-ready-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(8px);
+  color: #10b981; /* crisp green accent */
+  font-family: var(--font-heading), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
 /* Card Details */
 .portfolio-details {
   padding: 24px;
