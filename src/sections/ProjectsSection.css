@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  group: hover;
 }
 
 .project-image-wrapper {

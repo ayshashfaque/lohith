@@ -22,11 +22,18 @@ const Hero = () => {
       }
     };
 
+    const handlePlaying = () => {
+      canvas.style.display = 'none';
+    };
+
     video.addEventListener('loadeddata', captureFirstFrame);
+    video.addEventListener('playing', handlePlaying);
 
     // Play video automatically
     const playVideo = () => {
-      video.play().catch(() => {});
+      video.play().then(() => {
+        canvas.style.display = 'none';
+      }).catch(() => {});
     };
     
     // Trigger video play
@@ -55,44 +62,48 @@ const Hero = () => {
     return () => {
       video.removeEventListener('loadeddata', captureFirstFrame);
       video.removeEventListener('canplay', playVideo);
+      video.removeEventListener('playing', handlePlaying);
       observer.disconnect();
     };
   }, []);
 
   return (
     <section className="hero-section" id="home">
-      
-      {/* Layer 1: Filtered Background Video & Canvas static poster */}
-      <div className="hero-media-wrapper">
-        <canvas ref={canvasRef} className="hero-frame-canvas" aria-hidden="true" />
-        <video
-          ref={videoRef}
-          className="hero-video"
-          muted
-          playsInline
-          loop
-          preload="auto"
-        >
-          <source src="/assets/videos/myhero.mp4" type="video/mp4" />
-        </video>
-      </div>
-
-      {/* Layer 2: Legibility Shield (smooth charcoal gradient) */}
-      <div className="hero-legibility-shield" aria-hidden="true" />
-
-      {/* Layer 3: Typography & Content */}
-      <div className="hero-content">
-        <div className="hero-typography">
-          <div className="micro-label hero-label">✦ ESTABLISHED 2007</div>
-          <h1 className="hero-title">LOHITH CONSTRUCTION</h1>
-          <p className="hero-subtitle">
-            Chennai's No.1 Construction Company.
-          </p>
+      <div className="hero-container">
+        
+        {/* Layer 1: Filtered Background Video & Canvas static poster */}
+        <div className="hero-media-wrapper hero-video-card">
+          <canvas ref={canvasRef} className="hero-frame-canvas" aria-hidden="true" />
+          <video
+            ref={videoRef}
+            className="hero-video"
+            muted
+            playsInline
+            loop
+            preload="auto"
+          >
+            <source src="/assets/videos/again.mp4" type="video/mp4" />
+          </video>
         </div>
-        <div className="hero-actions">
-          <a href="#connect" className="btn btn-gold">Request Estimate</a>
-          <a href="#portfolio" className="btn btn-ghost">VIEW PROJECTS</a>
+
+        {/* Layer 2: Legibility Shield (smooth charcoal gradient) */}
+        <div className="hero-legibility-shield" aria-hidden="true" />
+
+        {/* Layer 3: Typography & Content */}
+        <div className="hero-content">
+          <div className="hero-typography">
+            <div className="hero-label">✦ ESTABLISHED 2007</div>
+            <h1 className="hero-title">LOHITH CONSTRUCTION</h1>
+            <p className="hero-subtitle">
+              Chennai’s No.1 Construction Company.
+            </p>
+          </div>
+          <div className="hero-actions">
+            <a href="#connect" className="btn btn-hero-primary">Request Estimate</a>
+            <a href="#portfolio" className="btn btn-hero-secondary">VIEW PROJECTS</a>
+          </div>
         </div>
+
       </div>
     </section>
   );

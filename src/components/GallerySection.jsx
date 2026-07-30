@@ -181,7 +181,7 @@ export default function GallerySection() {
       <div className="gallery-ambient-glow" />
       <div className="container">
         <div className="gallery-header">
-          <h2 className="gallery-title">Gallery</h2>
+          <h2 className="gallery-title">LOHITH INTERIORS</h2>
           <p className="gallery-subheading">
             A balanced grid showcase of premium architectural interior spaces, exhibiting detail and design.
           </p>
