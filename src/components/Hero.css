@@ -183,22 +183,27 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    height: auto;
-    min-height: auto;
-    padding: 120px 24px 60px 24px;
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: 72px 24px 24px 24px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .hero-container {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    justify-content: space-between;
+    gap: 16px;
     width: 100%;
-    height: auto;
+    height: 100%;
     max-width: 600px;
     align-items: center;
+    box-sizing: border-box;
   }
 
   /* 16:9 Padded Card Container for Video */
@@ -206,6 +211,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
+    max-height: 220px;
     background: rgba(255, 255, 255, 0.03);
     padding: 8px; /* Sleek padding */
     border-radius: 16px;
@@ -240,11 +246,14 @@
     transform: none;
     animation: none;
     opacity: 1;
-    gap: 28px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .hero-typography {
-    gap: 12px;
+    gap: 8px;
     align-items: center;
     text-align: center;
   }
@@ -270,7 +279,7 @@
     flex-direction: column;
     width: 100%;
     max-width: 300px; /* Capped at 300px max width */
-    gap: 12px;
+    gap: 8px;
     margin: 0 auto;
   }
 
@@ -315,6 +324,15 @@
     font-size: 1.8rem;
   }
   .hero-section {
-    padding-top: 100px;
+    padding: 64px 16px 16px 16px;
+  }
+  .hero-video-card {
+    max-height: 180px;
+  }
+  .hero-container {
+    gap: 12px;
+  }
+  .hero-content {
+    gap: 12px;
   }
 }

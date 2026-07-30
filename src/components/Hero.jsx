@@ -42,7 +42,28 @@ const Hero = () => {
       playVideo();
     } else {
       video.addEventListener('canplay', playVideo);
+      video.addEventListener('loadedmetadata', playVideo);
     }
+
+    // Touch/click interaction fallback to bypass low-power mode or strict autoplay restrictions
+    const enablePlayOnTouch = () => {
+      if (video.paused) {
+        video.play().then(() => {
+          canvas.style.display = 'none';
+          cleanupTouchListeners();
+        }).catch(() => {});
+      } else {
+        cleanupTouchListeners();
+      }
+    };
+
+    const cleanupTouchListeners = () => {
+      document.removeEventListener('touchstart', enablePlayOnTouch);
+      document.removeEventListener('click', enablePlayOnTouch);
+    };
+
+    document.addEventListener('touchstart', enablePlayOnTouch, { passive: true });
+    document.addEventListener('click', enablePlayOnTouch, { passive: true });
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -62,7 +83,9 @@ const Hero = () => {
     return () => {
       video.removeEventListener('loadeddata', captureFirstFrame);
       video.removeEventListener('canplay', playVideo);
+      video.removeEventListener('loadedmetadata', playVideo);
       video.removeEventListener('playing', handlePlaying);
+      cleanupTouchListeners();
       observer.disconnect();
     };
   }, []);
@@ -80,6 +103,7 @@ const Hero = () => {
             muted
             playsInline
             loop
+            autoPlay
             preload="auto"
           >
             <source src="/assets/videos/again.mp4" type="video/mp4" />
