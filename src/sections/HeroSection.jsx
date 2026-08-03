@@ -18,7 +18,7 @@ export default function HeroSection() {
         playsInline
         poster="/assets/images/hero-fallback.jpg"
       >
-        <source src="/assets/videos/hero-bg.mp4" type="video/mp4" />
+        <source src="/assets/videos/graded_hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="hero-overlay" />

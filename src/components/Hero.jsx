@@ -105,8 +105,10 @@ const Hero = () => {
             loop
             autoPlay
             preload="auto"
+            disableRemotePlayback
+            x-webkit-airplay="deny"
           >
-            <source src="/assets/videos/again.mp4" type="video/mp4" />
+            <source src="/assets/videos/no.mp4" type="video/mp4" />
           </video>
         </div>
 
