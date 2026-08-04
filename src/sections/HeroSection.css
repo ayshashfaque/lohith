@@ -158,8 +158,30 @@
 }
 
 @media (max-width: 768px) {
-  .hero-title { font-size: 48px; }
-  .hero-subtitle { font-size: 16px; }
-  .hero-paragraph { font-size: 18px; }
-  .hero-actions { flex-direction: column; gap: 16px; }
+  .hero-section {
+    height: 100dvh;          /* fills exactly the visible viewport on mobile */
+    min-height: 100dvh;
+    padding-top: 0;          /* video goes edge-to-edge behind the fixed header */
+  }
+
+  .hero-video {
+    position: fixed;         /* pin the video to the full screen on mobile */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-content {
+    margin-left: 0;          /* centre content on narrow screens */
+    padding: 0 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-title { font-size: 36px; }
+  .hero-subtitle { font-size: 13px; letter-spacing: 1.5px; }
+  .hero-paragraph { font-size: 16px; }
+  .hero-actions { flex-direction: column; gap: 16px; align-items: center; }
 }
