@@ -248,7 +248,7 @@
     height: 100%;
     border-radius: 0;
     object-fit: cover;
-    object-position: center center !important;
+    object-position: 42% center !important;
   }
 
   /* Legibility overlay gradient over full video */
