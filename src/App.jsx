@@ -15,6 +15,7 @@ import GallerySection from './components/GallerySection';
 import ParticleBackground from './components/ParticleBackground';
 import FloatingChatButton from './components/FloatingChatButton';
 import Interiors from './components/Interiors';
+import GoldenCursor from './components/GoldenCursor';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <>
+      <GoldenCursor />
       <AirplaneGridView />
       <Navbar currentView={currentView} />
       {currentView !== 'home' && <ParticleBackground />}

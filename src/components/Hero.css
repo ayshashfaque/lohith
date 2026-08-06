@@ -248,7 +248,7 @@
     height: 100%;
     border-radius: 0;
     object-fit: cover;
-    object-position: center center;
+    object-position: 67% center; /* Shifted to right so door section is centered on mobile */
   }
 
   /* Legibility overlay gradient over full video */
@@ -356,6 +356,10 @@
 }
 
 @media (max-width: 480px) {
+  .hero-video,
+  .hero-frame-canvas {
+    object-position: 68% center;
+  }
   .hero-title {
     font-size: 2rem;
   }

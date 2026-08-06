@@ -1,0 +1,149 @@
+/* ─── Requirement 1: Globally Hide Native Mouse Cursor ─── */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
+/* ─── Requirement 5: Non-interactive overlay ─── */
+.golden-cursor-wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none !important;
+  z-index: 999999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.golden-cursor-wrapper.visible {
+  opacity: 1;
+}
+
+/* ─── Requirement 2: Inner Direct Precision Dot ─── */
+.golden-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background: #f59e0b;
+  border-radius: 50%;
+  pointer-events: none !important;
+  box-shadow: 
+    0 0 8px #f59e0b,
+    0 0 16px rgba(251, 191, 36, 0.8);
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.2s ease;
+  will-change: transform;
+}
+
+.golden-cursor-dot.hovered {
+  width: 12px;
+  height: 12px;
+  background: #fbbf24;
+  box-shadow: 
+    0 0 12px #f59e0b,
+    0 0 24px rgba(251, 191, 36, 0.9);
+}
+
+.golden-cursor-dot.active {
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  box-shadow: 0 0 14px #ffffff;
+}
+
+/* ─── Requirements 3 & 4: Outer Trailing Ring with Clean Radial Glow ─── */
+.golden-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  pointer-events: none !important;
+  /* Clean radial glow gradient without harsh box-shadow banding */
+  background: radial-gradient(
+    circle,
+    rgba(245, 158, 11, 0.2) 0%,
+    rgba(251, 191, 36, 0.06) 55%,
+    transparent 100%
+  );
+  border: 1.5px solid rgba(245, 158, 11, 0.55);
+  backdrop-filter: blur(0.5px);
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.35));
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              background 0.3s ease, 
+              border-color 0.3s ease,
+              filter 0.3s ease;
+  will-change: transform;
+}
+
+.golden-cursor-glow.hovered {
+  width: 64px;
+  height: 64px;
+  background: radial-gradient(
+    circle,
+    rgba(245, 158, 11, 0.35) 0%,
+    rgba(251, 191, 36, 0.12) 60%,
+    transparent 100%
+  );
+  border-color: rgba(251, 191, 36, 0.85);
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.55));
+}
+
+.golden-cursor-glow.active {
+  width: 32px;
+  height: 32px;
+  border-color: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.7));
+}
+
+/* Golden Light Click Burst Ripple */
+.golden-cursor-ripple {
+  position: fixed;
+  pointer-events: none !important;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #fbbf24;
+  box-shadow: 0 0 14px #f59e0b;
+  transform: translate(-50%, -50%);
+  animation: goldenPulse 0.55s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  z-index: 999998;
+}
+
+@keyframes goldenPulse {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+    border-width: 2.5px;
+  }
+  100% {
+    width: 90px;
+    height: 90px;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+/* Fallback: restore default native cursor on mobile touch devices without fine mouse pointer */
+@media (hover: none) or (pointer: coarse) {
+  html,
+  body,
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+  .golden-cursor-wrapper {
+    display: none !important;
+  }
+}
